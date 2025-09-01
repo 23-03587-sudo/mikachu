@@ -1,0 +1,96 @@
+body {
+  background: #fbeff2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #5a3e3e;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 1rem;
+}
+
+.envelope {
+  width: 240px;
+  height: 140px;
+  background: #e8a8a8;
+  margin: auto;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  touch-action: manipulation;
+}
+
+.envelope::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 120px solid transparent;
+  border-right: 120px solid transparent;
+  border-bottom: 80px solid #d67a7a;
+  top: -80px;
+  left: 0;
+  transition: top 0.5s;
+}
+
+.envelope.open::before {
+  top: 0;
+}
+
+/* Updated part: scrollable letter */
+.letter {
+  position: absolute;
+  top: 140px;
+  left: 0;
+  width: 100%;
+  /* Allow content to scroll if too long */
+  max-height: calc(100vh - 200px);
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fff;
+  transition: top 0.5s;
+
+  /* Enable scrolling */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.envelope.open .letter {
+  top: 0;
+}
+
+.media-image {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.letter p {
+  font-size: 1.1em;
+  margin: 0.5rem 0;
+}
+
+#closeBtn {
+  padding: 8px 16px;
+  border: none;
+  background: #d67a7a;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hint {
+  margin-top: 12px;
+  font-size: 0.9em;
+  color: #7f5a5a;
+}
